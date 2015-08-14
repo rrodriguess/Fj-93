@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Calendar;
-
+/**
+ * Classe Responsável por armazenar Pagamentos
+ * @author Natho
+ *
+ */
 public class Pagamentos extends ArrayList<Pagamento> {
 	
 	private double valorPago;
