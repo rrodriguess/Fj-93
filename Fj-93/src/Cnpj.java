@@ -24,12 +24,27 @@ public class Cnpj {
 		return 1;
 	}
 	
-	public String getCnpjCredor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setCnpjCredor(String novoValor) {
+	public void setValor(String novoValor) {
 		this.valor = novoValor;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.valor.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Cnpj)) {
+			return false;
+		} 
+		Cnpj cnpjOutro = (Cnpj) obj;
+		return this.getValor().equals(cnpjOutro.getValor());
+
 	}
 	
 

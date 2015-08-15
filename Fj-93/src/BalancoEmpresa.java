@@ -8,10 +8,14 @@ public class BalancoEmpresa {
 		Divida divida = new Divida();
 		divida.setCredor(credor);
 		divida.setTotal(valor);
-		divida.getCnpjCredor().setCnpjCredor(cnpjCredor);
+		divida.getCnpjCredor().setValor(cnpjCredor);
 		
 		dividas.put(cnpjCredor, divida);
 		
+	}
+	
+	public void registroDividas(Divida divida) {
+		dividas.put(divida.getCnpjCredor().getValor(), divida);
 	}
 	
 	public void pagaDivida(String cnpjCredor, double valor, String nomePagador, String cnpjPagador) {
@@ -23,6 +27,13 @@ public class BalancoEmpresa {
 			pagamento.setValor(valor);
 			
 			divida.getPagamentos().registra(pagamento);
+		}
+	}
+	
+	public void pagaDivida(String cnpjCredor, Pagamento pagamento) {
+		Divida divida = dividas.get(cnpjCredor);
+		if(divida != null) {
+			divida.getPagamentos().add(pagamento);
 		}
 	}
 
