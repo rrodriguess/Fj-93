@@ -47,5 +47,10 @@ public class Cnpj {
 
 	}
 	
+	@Override
+	public String toString() {
+		return this.valor;
+	}
+	
 
 }
