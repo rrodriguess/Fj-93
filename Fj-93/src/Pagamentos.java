@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Iterator;
 /**
  * Classe Responsável por armazenar Pagamentos
@@ -32,7 +31,7 @@ public class Pagamentos implements Iterable<Pagamento>{
 	
 	public ArrayList<Pagamento> pagamentosAntesDe(Calendar data) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this.pagamentos) {
+		for (Pagamento pagamento : this) {
 			if(pagamento.getData().before(data)) {
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -42,7 +41,7 @@ public class Pagamentos implements Iterable<Pagamento>{
 	
 	public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
-		for (Pagamento pagamento : this.pagamentos) {
+		for (Pagamento pagamento : this) {
 			if(pagamento.getValor() > valorMinimo) {
 				pagamentosFiltrados.add(pagamento);	
 			}
@@ -52,7 +51,7 @@ public class Pagamentos implements Iterable<Pagamento>{
 	
 	public ArrayList<Pagamento> pagamentosDo(String cnpjPagador) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
-		for(Pagamento pagamento : this.pagamentos) {
+		for(Pagamento pagamento : this) {
 			if(pagamento.getCnpjPagador().equals(cnpjPagador)) {
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -66,6 +65,6 @@ public class Pagamentos implements Iterable<Pagamento>{
 
 	@Override
 	public Iterator<Pagamento> iterator() {		
-		return pagamentos.iterator();
+		return this.pagamentos.iterator();
 	}
 }
