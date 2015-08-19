@@ -1,6 +1,5 @@
 
 public class Cnpj implements Documento {
-	
 	private String valor;	
 
 	public Cnpj(String string) {
@@ -57,6 +56,4 @@ public class Cnpj implements Documento {
 				&& segundoDigitoVerificador() == segundoDigitoCorreto();
 	
 	}
-	
-
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Iterator;
 /**
  * Classe Responsável por armazenar Pagamentos
@@ -9,7 +10,7 @@ import java.util.Iterator;
 public class Pagamentos implements Iterable<Pagamento>{
 	
 	private double valorPago;
-	private ArrayList<Pagamento> pagamentos = new ArrayList<>();
+	private Collection<Pagamento> pagamentos = new ArrayList<>();
 	
 	public double getValorPago() {
 		return valorPago;
@@ -29,8 +30,8 @@ public class Pagamentos implements Iterable<Pagamento>{
 		this.paga(pagamento.getValor());
 	}
 	
-	public ArrayList<Pagamento> pagamentosAntesDe(Calendar data) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
+	public Collection<Pagamento> pagamentosAntesDe(Calendar data) {
+		Collection<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
 		for (Pagamento pagamento : this) {
 			if(pagamento.getData().before(data)) {
 				pagamentosFiltrados.add(pagamento);
@@ -39,8 +40,8 @@ public class Pagamentos implements Iterable<Pagamento>{
 		return pagamentosFiltrados;
 	}
 	
-	public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
+	public Collection<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
+		Collection<Pagamento> pagamentosFiltrados = new ArrayList<>();
 		for (Pagamento pagamento : this) {
 			if(pagamento.getValor() > valorMinimo) {
 				pagamentosFiltrados.add(pagamento);	
@@ -49,15 +50,15 @@ public class Pagamentos implements Iterable<Pagamento>{
 		return pagamentosFiltrados;
 	}
 	
-	public ArrayList<Pagamento> pagamentosDo(String cnpjPagador) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
-		for(Pagamento pagamento : this) {
-			if(pagamento.getCnpjPagador().equals(cnpjPagador)) {
-				pagamentosFiltrados.add(pagamento);
-			}
-		}
-		return pagamentosFiltrados;
-	}
+    public Collection<Pagamento> pagamentosDo(Documento documentoPagador) {
+        Collection<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
+        for (Pagamento pagamento : this.pagamentos) {
+          if (pagamento.getDocumentoPagador().equals(documentoPagador)) {
+            pagamentosFiltrados.add(pagamento);
+          }
+        }
+        return pagamentosFiltrados;
+      }
 	
 	public boolean foiRealizado(Pagamento pagamento) {
 		return pagamentos.contains(pagamento);
