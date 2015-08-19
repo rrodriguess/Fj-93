@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class TestaPagamentos {
 
 	public static void main(String[] args) {
@@ -16,6 +14,12 @@ public class TestaPagamentos {
 		System.out.println(pagamentos.foiRealizado(pagamento1));
 		
 		System.out.println("Valor total pago: " + pagamentos.getValorPago());
+		System.out.println("Valor total pagao: " + pagamentos.getValorPago());
+		
+		Iterable<Pagamento> lista = new Pagamentos();
+		for (Pagamento pagamento : lista) {
+			System.out.println(pagamento.getValor());
+		}
 	}
-
+	
 }

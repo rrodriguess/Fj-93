@@ -3,7 +3,7 @@ public class Divida {
 	private double total;
 
 	private String credor;
-	private Cnpj cnpjCredor = new Cnpj();
+	private Documento documentoCredor;
 	private Pagamentos pagamentos = new Pagamentos();
 
 	public double getTotal() {
@@ -17,18 +17,15 @@ public class Divida {
 //	public Pagamentos getPagamentos() {
 //		return pagamentos;
 //	}
-
-	public String getCredor() {
-		return credor;
+	
+	public Documento getDocumentoCredor() {
+		return documentoCredor;
 	}
 
-	public void setCredor(String credor) {
-		this.credor = credor;
+	public void setDocumentoCredor(Documento documentoCredor) {
+		this.documentoCredor = documentoCredor;
 	}
 
-	public Cnpj getCnpjCredor() {
-		return cnpjCredor;
-	}
 
 	public void registra(Pagamento pagamento) {
 		pagamentos.registra(pagamento);
@@ -36,6 +33,14 @@ public class Divida {
 
 	public double getValorPago() {
 		return pagamentos.getValorPago();
+	}
+
+	public String getCredor() {
+		return credor;
+	}
+
+	public void setCredor(String credor) {
+		this.credor = credor;
 	}
 	
 

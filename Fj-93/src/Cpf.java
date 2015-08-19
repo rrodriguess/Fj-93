@@ -1,28 +1,23 @@
 
-public class Cnpj implements Documento {
-	
-	private String valor;	
-
-	public Cnpj(String string) {
-		this.valor = valor;
-	}
+public class Cpf implements Documento {
+	private String valor;
 
 	private int segundoDigitoCorreto() {
 		return 2;
 	}
-	
+
 	private int segundoDigitoVerificador() {
 		return 2;
 	}
-	
+
 	private int primeiroDigitoVerificador() {
 		return 1;
 	}
-	
+
 	private int primeiroDigitoCorreto() {
 		return 1;
 	}
-	
+
 	public String getValor() {
 		return valor;
 	}
@@ -38,14 +33,14 @@ public class Cnpj implements Documento {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Cnpj)) {
+		if (!(obj instanceof Cpf)) {
 			return false;
-		} 
-		Cnpj cnpjOutro = (Cnpj) obj;
+		}
+		Cpf cnpjOutro = (Cpf) obj;
 		return this.getValor().equals(cnpjOutro.getValor());
 
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.valor;
@@ -55,8 +50,5 @@ public class Cnpj implements Documento {
 	public boolean ehValido() {
 		return primeiroDigitoVerificador() == primeiroDigitoCorreto()
 				&& segundoDigitoVerificador() == segundoDigitoCorreto();
-	
 	}
-	
-
 }
